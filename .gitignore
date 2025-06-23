@@ -1,0 +1,17 @@
+
+node_modules
+
+.sanity
+.next
+next
+
+
+.DS_Store
+.env
+.env.local
+.env.*.local
+
+sanity
+studio-portfolio-blog/.sanity
+studio-portfolio-blog/node_modules
+studio-portfolio-blog/dist
