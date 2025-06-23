@@ -4,5 +4,5 @@ import { NextStudio } from 'next-sanity/studio'
 import config from '../../../types/sanity.config'
 
 export function Studio() {
-  return <NextStudio config={config} />
+  return <NextStudio {...config} />
 } 
