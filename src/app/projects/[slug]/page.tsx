@@ -4,7 +4,11 @@ import Image from "next/image";
 import { Header } from "@/sections/Header";
 import { PortableText } from "@portabletext/react";
 
-export async function generateMetadata({ params }) {
+interface ProjectPageParams {
+  params: { slug: string };
+}
+
+export async function generateMetadata({ params }: ProjectPageParams) {
   const project = await client.fetch(
     `*[_type == "project" && slug.current == $slug][0]{
       title,
@@ -19,7 +23,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function ProjectDetailPage({ params }) {
+export default async function ProjectDetailPage({ params }: ProjectPageParams) {
   const project = await client.fetch(
     `*[_type == "project" && slug.current == $slug][0]{
       title,
@@ -51,7 +55,7 @@ export default async function ProjectDetailPage({ params }) {
         <PortableText value={project.description} />
       </div>
       <ul className="text-white/70 max-w-xl mb-8 space-y-2 text-base">
-        {project.results?.map((result, idx) => (
+        {project.results?.map((result: string, idx: number) => (
           <li key={idx} className="flex items-center gap-2">
             <span className="text-emerald-300">•</span> {result}
           </li>
